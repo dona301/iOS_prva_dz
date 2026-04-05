@@ -22,7 +22,8 @@ struct Article: Identifiable, Equatable {
         timePosted: Date,
         authorName: String?,
         authorSurName: String?,
-        category: Category
+        category: Category,
+        ratings: [Double] = []
     ) {
         self.title = title
         self.description = description
@@ -32,17 +33,17 @@ struct Article: Identifiable, Equatable {
         self.authorName = authorName
         self.authorSurName = authorSurName
         self.category = category
-        self.ratings = []
+        self.ratings = ratings
     }
     
-    private var ratings: [Int] = []
+    private var ratings: [Double] = []
     
     var averageRating: Double {
         guard !ratings.isEmpty else { return 0.0 }
         return Double(ratings.reduce(0, +)) / Double(ratings.count)
     }
     
-    mutating func addRating(_ value: Int) {
+    mutating func addRating(_ value: Double) {
         ratings.append(value)
     }
 }

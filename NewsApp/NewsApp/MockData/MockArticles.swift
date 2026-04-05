@@ -10,7 +10,8 @@ extension Article {
             timePosted: Date(),
             authorName: "John",
             authorSurName: "Doe",
-            category: .technology(.ai)
+            category: .technology(.ai),
+            ratings: [4.6, 3.4, 4.5, 2.3]
         ),
         Article(
             title: "Football finals results",
@@ -20,7 +21,8 @@ extension Article {
             timePosted: Date(),
             authorName: nil,
             authorSurName: nil,
-            category: .sport(.football)
+            category: .sport(.football),
+            ratings: [4.5, 3.2, 4.9, 2.8]
         ),
         Article(
             title: "Advancements in Renewable Energy",
@@ -30,7 +32,8 @@ extension Article {
             timePosted: Date(),
             authorName: "Alice",
             authorSurName: "Smith",
-            category: .technology(.energy)
+            category: .technology(.energy),
+            ratings: [2.5, 3.2, 4.9, 2.8]
         ),
         Article(
             title: "Basketball League Highlights",
@@ -40,7 +43,8 @@ extension Article {
             timePosted: Date(),
             authorName: "Michael",
             authorSurName: "Jordan",
-            category: .sport(.basketball)
+            category: .sport(.basketball),
+            ratings: [4.5, 3.3, 4.9, 4.8]
         ),
         Article(
             title: "New Culinary Trends",
@@ -50,7 +54,8 @@ extension Article {
             timePosted: Date(),
             authorName: "Emma",
             authorSurName: "Brown",
-            category: .lifestyle(.health)
+            category: .lifestyle(.health),
+            ratings: [4.5, 3.8, 4.9, 2.8]
         ),
         Article(
             title: "SpaceX Mars Mission Update",
@@ -60,7 +65,8 @@ extension Article {
             timePosted: Date(),
             authorName: "Elon",
             authorSurName: "Musk",
-            category: .technology(.space)
+            category: .technology(.space),
+            ratings: [4.5, 3.2, 4.9, 3.8]
         ),
         Article(
             title: "Yoga for Mental Health",
@@ -70,7 +76,8 @@ extension Article {
             timePosted: Date(),
             authorName: "Sophia",
             authorSurName: "Lee",
-            category: .lifestyle(.health)
+            category: .lifestyle(.health),
+            ratings: [4.5, 3.2, 4.9, 2.0]
         ),
         Article(
             title: "Top Travel Destinations 2026",
@@ -80,7 +87,8 @@ extension Article {
             timePosted: Date(),
             authorName: "Liam",
             authorSurName: "Wilson",
-            category: .lifestyle(.travel)
+            category: .lifestyle(.travel),
+            ratings: [4.5, 3.2, 4.3, 2.8]
         ),
         Article(
             title: "Olympic Swimming Records Broken",
@@ -90,7 +98,8 @@ extension Article {
             timePosted: Date(),
             authorName: nil,
             authorSurName: nil,
-            category: .sport(.swimming)
+            category: .sport(.swimming),
+            ratings: [4.5, 3.2, 2.8]
         ),
         Article(
             title: "The Future of Electric Cars",
@@ -100,7 +109,8 @@ extension Article {
             timePosted: Date(),
             authorName: "Robert",
             authorSurName: "Taylor",
-            category: .technology(.energy)
+            category: .technology(.energy),
+            ratings: [4.5, 3.2, 4.9]
         ),
         Article(
             title: "Photography Tips for Beginners",
@@ -110,7 +120,8 @@ extension Article {
             timePosted: Date(),
             authorName: "Olivia",
             authorSurName: "Martinez",
-            category: .lifestyle(.travel)
+            category: .lifestyle(.travel),
+            ratings: [3.2, 4.9, 2.8]
         )
     ]
 }
