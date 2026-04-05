@@ -4,43 +4,77 @@ struct WordleView: View {
     @State private var solution: String = "APPLE"
     @State private var currentWord: String = ""
     @State private var guesses: [WordleGuess] = []
+    @State private var gameOver: Bool = false
+    @State private var gameWon: Bool = false
     
     init() {
         _solution = State(initialValue: possibleWords.randomElement() ?? "APPLE")
     }
     
     var body: some View {
-        VStack {
-            
-            ScrollView {
-                LazyVStack(spacing: 12) {
-                    ForEach(guesses) { guess in
-                        WordleRowView(guess: guess)
-                    }
-                }
-                .padding()
-            }
-            
-            HStack {
-                TextField("Enter word", text: $currentWord)
-                    .textFieldStyle(.roundedBorder)
+        ZStack {
+            VStack {
                 
-                Button("Submit") {
-                    addGuess()
+                ScrollView {
+                    LazyVStack(spacing: 12) {
+                        ForEach(guesses) { guess in
+                            WordleRowView(guess: guess)
+                        }
+                        CurrentGuessRowView(currentWord: $currentWord)
+                    }
+                    .padding()
                 }
-                .buttonStyle(.borderedProminent)
-                .disabled(currentWord.count != 5)
-            }
-            .padding()
-            .background(Color(.systemBackground))
+                
+                HStack {
+                    TextField("Enter word", text: $currentWord)
+                        .textFieldStyle(.roundedBorder)
+                    
+                    Button("Submit") {
+                        addGuess()
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .disabled(currentWord.count != 5)
+                }
+            }                .padding()
+                .background(Color(.systemBackground))
+                .overlay(
+                    Group {
+                        if gameOver {
+                            VStack(spacing: 20) {
+                                Text(gameWon ? "You Won!" : "Game Over")
+                                    .font(.largeTitle)
+                                    .fontWeight(.bold)
+                                
+                                Text("The word was: \(solution)")
+                                    .font(.title2)
+                                
+                                Button("Play Again") {
+                                    resetGame()
+                                }
+                                .padding()
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                            }
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .background(Color.black.opacity(0.7))
+                        }
+                    }
+                )
         }
+        
     }
-    private func addGuess() {
-        let word = currentWord.uppercased()
-        guard word.count == 5 else { return }
-        let colors = computeColors(for: word)
-        let newGuess = WordleGuess(letters: Array(word), colors: colors)
-        guesses.append(newGuess)
+    func addGuess() {
+        guard currentWord.count == 5 else { return }
+
+        let newGuess = currentWord.uppercased()
+        guesses.append(WordleGuess(letters: Array(newGuess), colors: computeColors(for: newGuess)))
+        
+        if newGuess == solution {
+            gameWon = true
+            gameOver = true
+        }
+        
         currentWord = ""
     }
     func computeColors(for guess: String) -> [Color] {
@@ -66,6 +100,13 @@ struct WordleView: View {
         }
         
         return colors
+    }
+    func resetGame() {
+        guesses = []
+        currentWord = ""
+        solution = possibleWords.randomElement() ?? "APPLE"
+        gameOver = false
+        gameWon = false
     }
 }
 
