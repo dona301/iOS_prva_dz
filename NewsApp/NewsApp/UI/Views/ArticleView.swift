@@ -1,5 +1,5 @@
 import SwiftUI
-
+import Kingfisher
 struct ArticleView: View {
     let article: Article
     
@@ -7,16 +7,15 @@ struct ArticleView: View {
         GeometryReader { proxy in
             let imageWidth = proxy.size.width * 0.3
             HStack(alignment: .center, spacing: 12) {
-                AsyncImage(url: article.imageURL) { image in
-                    image
-                        .resizable()
-                        .scaledToFill()
-                } placeholder: {
-                    ProgressView()
-                }
-                .frame(width: imageWidth, height: 100)
-                .clipped()
-                .cornerRadius(12)
+                KFImage(article.imageURL)
+                    .placeholder {
+                        ProgressView()
+                    }
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: imageWidth, height: 100)
+                    .clipped()
+                    .cornerRadius(12)
                 
                 VStack(alignment: .leading) {
                     CategoryBadgeView(category: article.category)
