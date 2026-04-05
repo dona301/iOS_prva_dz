@@ -10,7 +10,7 @@ struct RootView: View {
                 Label("News", systemImage: "newspaper")
             }
             
-            Text("Games coming soon")
+            WordleView()
                 .tabItem {
                     Label("Games", systemImage: "gamecontroller")
                 }
