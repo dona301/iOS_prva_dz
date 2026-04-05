@@ -8,7 +8,9 @@ struct ArticleListView: View {
             ScrollView {
                 LazyVStack(spacing: 16) {
                     ForEach(articles) { article in
-                        ArticleView(article: article)
+                        NavigationLink(destination: ArticleDetailView(article: article)) {
+                            ArticleView(article: article)
+                        }
                     }
                 }
                 .padding()
