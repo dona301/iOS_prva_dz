@@ -2,7 +2,6 @@ import SwiftUI
 struct RootView: View {
     var body: some View {
         TabView {
-            
             NavigationStack {
                 ArticleListView(articles: Article.mock)
             }
@@ -10,10 +9,12 @@ struct RootView: View {
                 Label("News", systemImage: "newspaper")
             }
             
-            WordleView()
-                .tabItem {
-                    Label("Games", systemImage: "gamecontroller")
-                }
+            NavigationStack{
+                WordleView()
+            }
+            .tabItem {
+                Label("Games", systemImage: "gamecontroller")
+            }
         }
     }
 }
