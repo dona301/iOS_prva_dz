@@ -32,9 +32,7 @@ struct ArticleView: View {
                         .lineLimit(3)
                     
                     HStack {
-                        Text(formattedDate)
-                        Spacer()
-                        Text(String(format: "%.1f ★", article.averageRating))
+                        Text(makeArticleInfo(article: article))
                     }
                     .font(.caption)
                     .foregroundColor(.gray)
@@ -47,15 +45,10 @@ struct ArticleView: View {
         .cornerRadius(16)
         .shadow(radius: 2)
     }
-    
-    private var formattedDate: String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        return formatter.string(from: article.timePosted)
-    }
 }
 
 #Preview {
     ArticleView(article: Article.mock[0])
         .padding()
 }
+
