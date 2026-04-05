@@ -30,6 +30,6 @@ struct ArticleDetailView: View {
 }
 
 #Preview {
-    ArticleView(article: Article.mock[0])
+    ArticleDetailView(article: Article.mock[0])
         .padding()
 }
